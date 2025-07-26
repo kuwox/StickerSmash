@@ -1,21 +1,21 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { PropsWithChildren } from "react";
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 
 type Props = PropsWithChildren<{
-  inVisible: boolean;
+  isVisible: boolean;
   onClose: () => void;
 }>;
 
-export default function EmojiPicker({ inVisible, onClose, children }: Props) {
+export default function EmojiPicker({ isVisible, children, onClose }: Props) {
   return (
     <View>
-      <Modal animationType="slide" transparent={true} visible={inVisible}>
+      <Modal animationType="slide" transparent={true} visible={isVisible}>
         <View style={styles.modalContent}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Choose a sticker</Text>
             <Pressable onPress={onClose}>
-              <MaterialIcons name="close" size={22} color="#fff" />
+              <MaterialIcons name="close" color="#fff" size={22} />
             </Pressable>
           </View>
           {children}
@@ -25,28 +25,28 @@ export default function EmojiPicker({ inVisible, onClose, children }: Props) {
   );
 }
 
-
 const styles = StyleSheet.create({
-    modalContent: {
-        height: '25%',
-        width: '100%',
-        backgroundColor: '#25292e',
-        borderTopRightRadius: 18,
-        borderTopLeftRadius: 18,
-        position: 'absolute',
-        bottom: 0,
-    },
-    titleContainer: {
-        height: "16%",
-        backgroundColor: '#464c55',
-        borderTopRightRadius: 10,
-        borderTopLeftRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    title: {
-        color: '#fff',
-        fontSize: 16,
-    },
+  modalContent: {
+    height: "25%",
+    width: "100%",
+    backgroundColor: "#25292e",
+    borderTopRightRadius: 18,
+    borderTopLeftRadius: 18,
+    position: "absolute",
+    bottom: 0,
+  },
+  titleContainer: {
+    height: "16%",
+    backgroundColor: "#464C55",
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  title: {
+    color: "#fff",
+    fontSize: 16,
+  },
 });

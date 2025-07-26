@@ -1,6 +1,10 @@
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-import { ImageSourcePropType } from 'react-native';
+import { ImageSourcePropType } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 type Props = {
   imageSize: number;
@@ -29,7 +33,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
     };
   });
 
-  const drag = Gesture.Pan().onChange(event => {
+  const drag = Gesture.Pan().onChange((event) => {
     translateX.value += event.changeX;
     translateY.value += event.changeY;
   });
